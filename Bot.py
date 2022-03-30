@@ -36,16 +36,54 @@ async def _ping(ctx):
             description='Give the description for the Announcement',
             required=True,
             option_type=3
+        ),
+        create_option(
+            name="pings",
+            description="The members which will recieve pings",
+            required=True,
+            option_type=3
         )
 
     ]
 )
-async def _Announce(ctx, title:str, description:str):
+async def _Announce(ctx, title:str, description:str, pings:str):
     embed = discord.Embed(title=title, description=description, color=discord.Color.red())
-    announcementicon = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.flaticon.com%2Ffree-icon%2Fannouncement_1870127&psig=AOvVaw1CBmDqo9_Hf6o7vFXDwgR7&ust=1648654608469000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCPC3gZbT6_YCFQAAAAAdAAAAABAD',
-    embed.set_thumbnail(url=announcementicon)
+    embed.add_field(name="Pings", value=pings, inline=False)
+    embed.set_thumbnail(url='https://cdn-icons-png.flaticon.com/512/2413/2413278.png')
     embed.set_footer(icon_url='https://img.icons8.com/ios-glyphs/344/verified-account--v1.png', text = "Posted By A certified Mod")
-    await ctx.send(embed)
+    await ctx.send(embed=embed)
+
+@slash.slash(
+    name="intresting",
+    description="An intresting fact or something",
+    guild_ids=[883746608905334835],
+    options=[
+        create_option(
+            name="title",
+            description="Give the Title",
+            required="True",
+            option_type=3
+        ),
+        create_option(
+            name="link",
+            description="Paste the link",
+            required=True,
+            option_type=3
+        ),
+        create_option(
+            name="description",
+            description="Description of the text",
+            required=False,
+            option_type=3
+        )
+    ]
+)
+async def _intresting(ctx, title:str, description:str, link:str):
+    embed = discord.Embed(title=title, description=description, color = discord.Color.purple())
+    embed.add_field(name="Link", value=link, inline=False)
+    embed.set_thumbnail(url='https://thumbs.dreamstime.com/z/interesting-facts-line-icon-exclamation-mark-sign-vector-interesting-facts-line-icon-exclamation-mark-sign-book-symbol-colorful-130127636.jpg')
+    embed.set_footer(icon_url='https://img.icons8.com/ios-glyphs/344/verified-account--v1.png', text="Posted by a certified Big Brain")
+    await ctx.send(embed=embed)
 
 @slash.slash(
     name="lolxd",
