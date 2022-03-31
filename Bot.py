@@ -39,16 +39,27 @@ async def _ping(ctx):
         ),
         create_option(
             name="pings",
-            description="The members which will recieve pings",
+            description="Pings @everyone",
             required=True,
-            option_type=3
+            option_type=3,
+            choices=[
+                create_choice(
+                    name="@everyone",
+                    value="@everyone"
+                ),
+                create_choice(
+                    name="No one",
+                    value="no one"
+                )
+            ]
         )
-
     ]
 )
-async def _Announce(ctx, title:str, description:str, pings:str):
+
+async def _Announce(ctx, title:str, description:str, pings:str ):
     embed = discord.Embed(title=title, description=description, color=discord.Color.red())
-    embed.add_field(name="Pings", value=pings, inline=False)
+
+    embed.add_field(name="Pings", value=pings)
     embed.set_thumbnail(url='https://cdn-icons-png.flaticon.com/512/2413/2413278.png')
     embed.set_footer(icon_url='https://img.icons8.com/ios-glyphs/344/verified-account--v1.png', text = "Posted By A certified Mod")
     await ctx.send(embed=embed)
@@ -84,6 +95,9 @@ async def _intresting(ctx, title:str, description:str, link:str):
     embed.set_thumbnail(url='https://thumbs.dreamstime.com/z/interesting-facts-line-icon-exclamation-mark-sign-vector-interesting-facts-line-icon-exclamation-mark-sign-book-symbol-colorful-130127636.jpg')
     embed.set_footer(icon_url='https://img.icons8.com/ios-glyphs/344/verified-account--v1.png', text="Posted by a certified Big Brain")
     await ctx.send(embed=embed)
+
+
+
 
 @slash.slash(
     name="lolxd",
@@ -133,4 +147,4 @@ async def _lolxd(ctx,  type:str, description:str, link:str):
     embed.set_footer(icon_url='https://img.icons8.com/ios-glyphs/344/verified-account--v1.png', text = "Posted By A certified Memer")
     await ctx.send(embed=embed)
 
-client.run('OTI0MTk0NDU3MDk4Nzg4ODk0.YcbBKQ.pa4C3eZP79QCEdVcQX08zrH4sOU')
+client.run('OTI0MTk0NDU3MDk4Nzg4ODk0.YcbBKQ.6wV_I0bnPZ_ndzJwQDMUczZ3SqA')
