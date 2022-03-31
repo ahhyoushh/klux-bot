@@ -147,4 +147,4 @@ async def _lolxd(ctx,  type:str, description:str, link:str):
     embed.set_footer(icon_url='https://img.icons8.com/ios-glyphs/344/verified-account--v1.png', text = "Posted By A certified Memer")
     await ctx.send(embed=embed)
 
-client.run('OTI0MTk0NDU3MDk4Nzg4ODk0.YcbBKQ.6wV_I0bnPZ_ndzJwQDMUczZ3SqA')
+client.run(Token)
