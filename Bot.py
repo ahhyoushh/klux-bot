@@ -11,6 +11,7 @@ slash = SlashCommand(client, sync_commands=True)
 @client.event
 async def on_ready():
     print('Bot logged as {0.user}'.format(client))
+    await client.change_prescence(activity=discord.Streaming('Da Kluxs'))
 
 @slash.slash(
     name="ping",
